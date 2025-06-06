@@ -7,6 +7,21 @@
 </head>
 <body>
 	<section>
+<!-- 	<div class="container-fluid bg-primary p-4 mt-5 ">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<form action="admin/users" method="get">
+						<div class="input-group">
+							<input type="text" class="form-control" name="ch">
+							<button class="btn btn-light text-dark ms-3 col-md-2">
+								<i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm người dùng
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>-->
 		<div class="container-fluid mt-5 p-5">
 
 			<div class="card card-sh">
@@ -53,7 +68,8 @@
 									<a
 									th:href="@{'/admin/updateSts?status=false&id='+${u.id}}+'&type='+${userType}"
 									class="btn btn-sm btn-danger">
-										Inactive</a></td>
+										Inactive</a>
+										</td>
 							</tr>
 
 						</tbody>

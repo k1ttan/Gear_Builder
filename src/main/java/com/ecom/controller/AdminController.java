@@ -337,7 +337,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/update-order-status")
-	public String updateOrderStatus(@RequestParam Integer id, @RequestParam Integer st, HttpSession session) {
+	public String updateOrderStatus(@RequestParam Integer id, @RequestParam Integer st, HttpSession session, String orderId) {
 
 		OrderStatus[] values = OrderStatus.values();
 		String status = null;
@@ -347,14 +347,29 @@ public class AdminController {
 				status = orderSt.getName();
 			}
 		}
+		ProductOrder existingOrder = orderService.getOrderById(id);
+	    String oldStatus = existingOrder.getStatus();
+	 
+	    ProductOrder updateOrder = orderService.updateOrderStatus(id, status);
 
-		ProductOrder updateOrder = orderService.updateOrderStatus(id, status);
-
-		try {
-			commonUtil.sendMailForProductOrder(updateOrder, status);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	    if (status.equals(OrderStatus.DELIVERED.getName()) &&
+	            !oldStatus.equals(OrderStatus.DELIVERED.getName())) {
+	            
+	            Product product = updateOrder.getProduct();
+	            int quantitySold = updateOrder.getQuantity();
+	            
+	            int newStock = product.getStock() - quantitySold;
+	            if (newStock < 0) newStock = 0;
+	            
+	            product.setStock(newStock);
+	            productService.saveProduct(product);
+	        }
+		
+//		try {
+//			commonUtil.sendMailForProductOrder(updateOrder, status);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		if (!ObjectUtils.isEmpty(updateOrder)) {
 			session.setAttribute("succMsg", "Status Updated");

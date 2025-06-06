@@ -11,11 +11,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ecom.model.Product;
 import com.ecom.model.UserDtls;
 import com.ecom.repository.UserRepository;
 import com.ecom.service.UserService;
@@ -178,4 +180,13 @@ public class UserServiceImpl implements UserService {
 		return userRepository.existsByEmail(email);
 	}
 
+	@Override
+	public List<UserDtls> searchUser(String ch) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	public List<UserDtls> searchUser(String ch) {
+//		return userRepository.findByTitleContainingIgnoreCaseOrCategoryContainingIgnoreCase(ch, ch);
+//	}
 }

@@ -36,4 +36,6 @@ public interface UserService {
 
 	public Boolean existsEmail(String email);
 
+	List<UserDtls> searchUser(String ch);
+
 }

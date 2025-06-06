@@ -13,7 +13,8 @@
 			<div class="col-md-12 p-5">
 				<div class="row">
 					<th:block th:if="${session.succMsg}">
-						<p class="text-success alert alert-success text-center" role="alert">[[${session.succMsg}]]</p>
+						<p class="text-success alert alert-success text-center"
+							role="alert">[[${session.succMsg}]]</p>
 						<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
 					</th:block>
 
@@ -23,8 +24,8 @@
 
 					</th:block>
 					<div class="col-md-6 text-end">
-						<img alt="" th:src="@{'/img/product_img/'+${product.image}}" width="300px"
-							height="250px">
+						<img alt="" th:src="@{'/img/product_img/'+${product.image}}"
+							width="300px" height="250px">
 					</div>
 
 					<div class="col-md-6">
@@ -34,8 +35,8 @@
 							<span class="fw-bold">Mô tả sản phẩm : </span><br>[[${product.description}]]
 						</p>
 						<p>
-							<span class="fw-bold"> Product Details: </span> <br> Trạng thái
-							:
+							<span class="fw-bold"> Product Details: </span> <br> Trạng
+							thái :
 							<th:block th:if="${product.stock>0}">
 								<span class="badge bg-success">Còn hàng</span>
 							</th:block>
@@ -45,14 +46,18 @@
 							</th:block>
 
 
-							<br> Loại: [[${product.category}]]<br> 
+							<br> Loại: [[${product.category}]]<br>
 						</p>
 						<p class="fs-5 fw-bold">
-							Price :&nbsp; &nbsp; &nbsp; &nbsp;
-							[[${product.discountPrice}]] &#8363; <span
-								class="fs-6 text-decoration-line-through text-secondary">[[${product.price}]] &#8363;</span>
-							<span class="fs-6  text-success">[[${product.discount}]]%
-								off</span>
+							Price :&nbsp; &nbsp; &nbsp; &nbsp; <span
+								th:text="${#numbers.formatDecimal(product.discountPrice, 0, 'COMMA', 0, 'POINT')}"></span>
+							&#8363; <span
+								class="fs-6 text-decoration-line-through text-secondary">
+								<span
+								th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0, 'POINT')}"></span>
+								&#8363;
+							</span> <span class="fs-6 text-success"> [[${product.discount}]]%
+								off </span>
 						</p>
 
 						<div class="row">
@@ -72,7 +77,8 @@
 
 						<th:block th:if="${product.stock>0}">
 							<th:block th:if="${user==null}">
-								<a href="/signin" class="btn btn-danger col-md-12">Thêm vào giỏ hàng</a>
+								<a href="/signin" class="btn btn-danger col-md-12">Thêm vào
+									giỏ hàng</a>
 							</th:block>
 
 							<th:block th:unless="${user==null}">

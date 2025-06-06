@@ -120,20 +120,14 @@ public class UserController {
 		}
 		return "/user/order";
 	}
-
+	
 	@PostMapping("/save-order")
 	public String saveOrder(@ModelAttribute OrderRequest request, Principal p) throws Exception {
-		// System.out.println(request);
-		
+		System.out.println(request);
 		UserDtls user = getLoggedInUserDetails(p);
 		orderService.saveOrder(user.getId(), request);
-		return "/success";
+		return "/user/success";
 	}
-//
-//	@GetMapping("/success")
-//	public String loadSuccess() {
-//		return "/user/success";
-//	}
 
 	@GetMapping("/user-orders")
 	public String myOrder(Model m, Principal p) {

@@ -15,7 +15,7 @@
 				<div class="col-md-7 p-2">
 					<div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
 						<div class="card-header text-center">
-							<p class="fs-4 text-center">Đăng ký</p>
+							<p class="fs-4 text-center">Đăng kí</p>
 							<th:block th:if="${session.succMsg}">
 								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
 								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
@@ -31,12 +31,12 @@
 								method="post">
 								<div class="row">
 									<div class="col">
-										<label class="form-label">Họ và tên</label> <input required
+										<label class="form-label">Họ và Tên</label> <input required
 											class="form-control" name="name" type="text">
 									</div>
 
 									<div class="col">
-										<label class="form-label">Số điện thoại</label> <input
+										<label class="form-label">Số Điện Thoại</label> <input
 											required class="form-control" name="mobileNumber"
 											type="number">
 									</div>
@@ -56,7 +56,7 @@
 									</div>
 
 									<div class="col">
-										<label class="form-label">Thành phố</label> <input required
+										<label class="form-label">Thành phố</label> <input required
 											class="form-control" name="city" type="text">
 									</div>
 
@@ -69,7 +69,7 @@
 									</div>
 
 									<div class="col">
-										<label class="form-label">Mã bưu chính</label> <input required
+										<label class="form-label">Mã Bưu Chính</label> <input required
 											class="form-control" name="pincode" type="number">
 									</div>
 
@@ -103,7 +103,7 @@
 
 
 								<button type="submit"
-									class="btn bg-primary text-white col-md-12">Đăng ký</button>
+									class="btn bg-primary text-white col-md-12">Đăng kí</button>
 							</form>
 						</div>
 

@@ -72,8 +72,10 @@
 										<td>[[${orderDtls.orderDate}]]</td>
 										<td>[[${orderDtls.product.title}]]</td>
 										<td>Quantity : [[${orderDtls.quantity}]] <br>Giá :
-											[[${orderDtls.price}]] <br>Total Price
-											:[[${orderDtls.quantity * orderDtls.price}]]
+											[[${#numbers.formatDecimal(o.price, 0, 'COMMA', 0,
+										'POINT')}]] <br>Total Price
+											:[[${#numbers.formatDecimal(o.quantity*o.price, 0, 'COMMA', 0,
+										'POINT')}]]
 										</td>
 										<td>[[${orderDtls.status}]]</td>
 										<td>
@@ -131,8 +133,10 @@
 									<td>[[${o.orderDate}]]</td>
 									<td>[[${o.product.title}]]</td>
 									<td>Số lượng: [[${o.quantity}]] <br>Giá :
-										[[${o.price}]] <br>Tổng giá :[[${o.quantity *
-										o.price}]]
+										[[${#numbers.formatDecimal(o.price, 0, 'COMMA', 0, 'POINT')}]]
+										<br>Tổng giá
+										:[[${#numbers.formatDecimal(o.quantity*o.price, 0, 'COMMA', 0,
+										'POINT')}]]
 									</td>
 									<td>[[${o.status}]]</td>
 									<td>

@@ -2,6 +2,8 @@ package com.ecom.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ecom.model.UserDtls;
@@ -15,4 +17,6 @@ public interface UserRepository extends JpaRepository<UserDtls, Integer> {
 	public UserDtls findByResetToken(String token);
 
 	public Boolean existsByEmail(String email);
+	
+//	List<UserDtls> searchByNameOrMobileNumberOrEmail(String ch, String ch2);
 }

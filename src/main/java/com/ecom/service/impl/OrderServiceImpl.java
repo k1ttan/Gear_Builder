@@ -68,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 			order.setOrderAddress(address);
 
 			ProductOrder saveOrder = orderRepository.save(order);
-			commonUtil.sendMailForProductOrder(saveOrder, "success");
+//			commonUtil.sendMailForProductOrder(saveOrder, "success");
 		}
 	}
 
@@ -81,13 +81,12 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public ProductOrder updateOrderStatus(Integer id, String status) {
 		Optional<ProductOrder> findById = orderRepository.findById(id);
-		if (findById.isPresent()) {
-			ProductOrder productOrder = findById.get();
-			productOrder.setStatus(status);
-			ProductOrder updateOrder = orderRepository.save(productOrder);
-			return updateOrder;
-		}
-		return null;
+	    if (findById.isPresent()) {
+	        ProductOrder productOrder = findById.get();
+	        productOrder.setStatus(status);
+	        return orderRepository.save(productOrder);
+	    }
+	    return null;
 	}
 
 	@Override
@@ -106,5 +105,15 @@ public class OrderServiceImpl implements OrderService {
 	public ProductOrder getOrdersByOrderId(String orderId) {
 		return orderRepository.findByOrderId(orderId);
 	}
-
+	
+	public ProductOrder getOrderById(Integer id) {
+	    Optional<ProductOrder> order = orderRepository.findById(id);
+	    return order.orElse(null);
+	}
+	
+	public ProductOrder saveProductOrder(ProductOrder order) {
+	    return orderRepository.save(order);
+	}
+	
+	
 }
